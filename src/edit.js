@@ -1,11 +1,30 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText, MediaUpload } from '@wordpress/block-editor';
+import './editor.scss';
 import { useState, useEffect } from 'react';
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isEditing, setIsEditing] = useState(false);
-    const { slides } = attributes;
+    const [slides, setSlides] = useState([
+        {
+            title: __('Slide 1 Title', 'easy-slider'),
+            content: __('Slide 1 Content', 'easy-slider'),
+            imageUrl: '',
+        },
+        {
+            title: __('Slide 2 Title', 'easy-slider'),
+            content: __('Slide 2 Content', 'easy-slider'),
+            imageUrl: '',
+        },
+        {
+            title: __('Slide 3 Title', 'easy-slider'),
+            content: __('Slide 3 Content', 'easy-slider'),
+            imageUrl: '',
+        }
+    ]);
+
+    const blockProps = useBlockProps();
 
     useEffect(() => {
         if (!isEditing) {
@@ -34,7 +53,7 @@ export default function Edit({ attributes, setAttributes }) {
     };
 
     return (
-        <div { ...useBlockProps() }>
+        <div { ...blockProps }>
             <div className="slider-container">
                 <div className="slides" style={{ transform: `translateX(-${currentSlide * 100}%)`, transition: isEditing ? 'none' : 'transform 0.5s ease-in-out' }}>
                     {slides.map((slide, index) => (
@@ -45,7 +64,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 onChange={(value) => {
                                     const updatedSlides = [...slides];
                                     updatedSlides[index].title = value;
-                                    setAttributes({ slides: updatedSlides });
+                                    setSlides(updatedSlides);
                                 }}
                                 onFocus={handleEditStart}
                                 onBlur={handleEditEnd}
@@ -58,7 +77,7 @@ export default function Edit({ attributes, setAttributes }) {
                                     onSelect={(media) => {
                                         const updatedSlides = [...slides];
                                         updatedSlides[index].imageUrl = media.url;
-                                        setAttributes({ slides: updatedSlides });
+                                        setSlides(updatedSlides);
                                     }}
                                     type="image"
                                     render={({ open }) => (
@@ -74,7 +93,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 onChange={(value) => {
                                     const updatedSlides = [...slides];
                                     updatedSlides[index].content = value;
-                                    setAttributes({ slides: updatedSlides });
+                                    setSlides(updatedSlides);
                                 }}
                                 onFocus={handleEditStart}
                                 onBlur={handleEditEnd}

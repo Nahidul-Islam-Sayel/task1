@@ -1,6 +1,9 @@
 .slider-container {
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 .slides {
@@ -10,13 +13,13 @@
 
 .slide {
     flex: 0 0 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center; /* Center text within slide */
     display: flex;
     flex-direction: column;
     align-items: center; /* Center horizontally */
     justify-content: center; /* Center vertically */
+    text-align: center; /* Center text */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .slide img {
@@ -27,6 +30,8 @@
 
 .slider-controls {
     margin-top: 10px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
 }
 
 .prev-button,

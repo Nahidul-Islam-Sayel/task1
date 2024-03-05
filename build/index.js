@@ -18,19 +18,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 
 
 
-function Edit({
-  attributes,
-  setAttributes
-}) {
+
+function Edit() {
   const [currentSlide, setCurrentSlide] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const [isEditing, setIsEditing] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const {
-    slides
-  } = attributes;
+  const [slides, setSlides] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Slide 1 Title', 'easy-slider'),
+    content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Slide 1 Content', 'easy-slider'),
+    imageUrl: ''
+  }, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Slide 2 Title', 'easy-slider'),
+    content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Slide 2 Content', 'easy-slider'),
+    imageUrl: ''
+  }, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Slide 3 Title', 'easy-slider'),
+    content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Slide 3 Content', 'easy-slider'),
+    imageUrl: ''
+  }]);
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (!isEditing) {
       const timer = setTimeout(() => {
@@ -53,7 +63,7 @@ function Edit({
     setIsEditing(false);
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
+    ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "slider-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -71,9 +81,7 @@ function Edit({
     onChange: value => {
       const updatedSlides = [...slides];
       updatedSlides[index].title = value;
-      setAttributes({
-        slides: updatedSlides
-      });
+      setSlides(updatedSlides);
     },
     onFocus: handleEditStart,
     onBlur: handleEditEnd,
@@ -88,9 +96,7 @@ function Edit({
     onSelect: media => {
       const updatedSlides = [...slides];
       updatedSlides[index].imageUrl = media.url;
-      setAttributes({
-        slides: updatedSlides
-      });
+      setSlides(updatedSlides);
     },
     type: "image",
     render: ({
@@ -104,9 +110,7 @@ function Edit({
     onChange: value => {
       const updatedSlides = [...slides];
       updatedSlides[index].content = value;
-      setAttributes({
-        slides: updatedSlides
-      });
+      setSlides(updatedSlides);
     },
     onFocus: handleEditStart,
     onBlur: handleEditEnd,
@@ -170,6 +174,18 @@ function save() {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
   }, 'Easy Slider – hello from the saved content!');
 }
+
+/***/ }),
+
+/***/ "./src/editor.scss":
+/*!*************************!*\
+  !*** ./src/editor.scss ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
