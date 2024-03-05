@@ -3,6 +3,7 @@
   \****************************************************************************************************************************************************************************************************************************************/
 .slider-container {
   overflow: hidden;
+  position: relative;
 }
 
 .slides {
@@ -12,6 +13,19 @@
 
 .slide {
   flex: 0 0 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center; /* Center text within slide */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+
+.slide img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px; /* Add some space below the image */
 }
 
 .slider-controls {
