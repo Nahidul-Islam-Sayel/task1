@@ -1,5 +1,6 @@
 import { useBlockProps } from '@wordpress/block-editor';
-
+import { RichText } from '@wordpress/block-editor';
+import './style.scss'
 export default function save({ attributes }) {
     const { slides } = attributes;
 
@@ -9,9 +10,9 @@ export default function save({ attributes }) {
                 <div className="slides">
                     {slides.map((slide, index) => (
                         <div key={index} className="slide">
-                            <h2>{slide.title}</h2>
+                            <RichText.Content className='title' tagName="h2" value={slide.title} />
                             {slide.imageUrl && <img src={slide.imageUrl} alt={slide.title} style={{ width: '400px' }} />}
-                            <p>{slide.content}</p>
+                            <RichText.Content className='content' tagName="p" value={slide.content} />
                         </div>
                     ))}
                 </div>

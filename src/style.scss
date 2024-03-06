@@ -4,7 +4,10 @@
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    border: 1px solid #ccc; /* Add border to slider container */
+    border: 2px solid #e6e6e6; /* Add border to slider container */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    background-color: #f9f9f9; /* Set background color */
 }
 
 .slides {
@@ -16,26 +19,23 @@
     flex: 0 0 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
-    text-align: center; /* Center text */
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
     padding: 20px;
     box-sizing: border-box;
-    border-right: 1px solid #ccc; /* Add border between slides */
-	word-wrap: break-word; /* Allow text to wrap within the slide */
+    word-wrap: break-word; 
 }
+
 .slide h2{
-    max-width: 200px; /* Set maximum width for title and content */
+    max-width: 400px; /* Set maximum width for title and content */
     margin-left: auto; /* Align text to the center */
     margin-right: auto; 
 }
 .slide p {
-    max-width: 300px; /* Set maximum width for title and content */
+    max-width: 600px; /* Set maximum width for title and content */
     margin-left: auto; /* Align text to the center */
     margin-right: auto; /* Align text to the center */
-}
-.slide:last-child {
-    border-right: none; /* Remove border from the last slide */
 }
 
 .slide img {
@@ -62,15 +62,4 @@
 .prev-button:hover,
 .next-button:hover {
     opacity: 0.7;
-}
-
-// Additional styles for title and content
-.slide h2,
-.slide p {
-    max-width: 80%; /* Set maximum width for title and content */
-    margin-left: auto; /* Align text to the center */
-    margin-right: auto; /* Align text to the center */
-    overflow: hidden; /* Hide overflow content */
-    text-overflow: ellipsis; /* Show ellipsis (...) for overflow text */
-    white-space: nowrap; /* Prevent text from wrapping */
 }
