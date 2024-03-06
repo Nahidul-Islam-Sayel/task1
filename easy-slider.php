@@ -28,3 +28,10 @@ function easy_slider_easy_slider_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'easy_slider_easy_slider_block_init' );
+
+function enqueue_custom_scripts() {
+
+	// Enqueue your custom slider script
+	wp_enqueue_script( 'custom-slider', plugin_dir_url( __FILE__ ) . './src/function/slider.js', array( 'jquery' ), '1.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_custom_scripts' );

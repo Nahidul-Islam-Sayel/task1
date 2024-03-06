@@ -1,28 +1,14 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, MediaUpload } from '@wordpress/block-editor';
-import './editor.scss';
+import { useBlockProps, RichText, MediaUpload, BlockControls } from '@wordpress/block-editor';
 import { useState, useEffect } from 'react';
+import { Button } from '@wordpress/components';
+import { Toolbar } from '@wordpress/components';
 
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isEditing, setIsEditing] = useState(false);
-    const [slides, setSlides] = useState([
-        {
-            title: __('Slide 1 Title', 'easy-slider'),
-            content: __('Slide 1 Content', 'easy-slider'),
-            imageUrl: '',
-        },
-        {
-            title: __('Slide 2 Title', 'easy-slider'),
-            content: __('Slide 2 Content', 'easy-slider'),
-            imageUrl: '',
-        },
-        {
-            title: __('Slide 3 Title', 'easy-slider'),
-            content: __('Slide 3 Content', 'easy-slider'),
-            imageUrl: '',
-        }
-    ]);
+
+    const { slides } = attributes;
 
     const blockProps = useBlockProps();
 
@@ -52,8 +38,40 @@ export default function Edit() {
         setIsEditing(false);
     };
 
+    const handleSlideChange = (index, key, value) => {
+        const updatedSlides = slides.map((slide, i) => {
+            if (i === index) {
+                return {
+                    ...slide,
+                    [key]: value,
+                };
+            }
+            return slide;
+        });
+
+        setAttributes({ slides: updatedSlides });
+    };
+
+    const addSlide = () => {
+        const newSlide = {
+            title: '',
+            content: '',
+            imageUrl: '',
+        };
+        setAttributes({ slides: [...slides, newSlide] });
+    };
+
     return (
         <div { ...blockProps }>
+            <BlockControls>
+                <Toolbar>
+                    <Button
+                        icon="plus-alt2"
+                        label={__('Add Slide')}
+                        onClick={addSlide}
+                    />
+                </Toolbar>
+            </BlockControls>
             <div className="slider-container">
                 <div className="slides" style={{ transform: `translateX(-${currentSlide * 100}%)`, transition: isEditing ? 'none' : 'transform 0.5s ease-in-out' }}>
                     {slides.map((slide, index) => (
@@ -61,11 +79,7 @@ export default function Edit() {
                             <RichText
                                 tagName="h2"
                                 value={slide.title}
-                                onChange={(value) => {
-                                    const updatedSlides = [...slides];
-                                    updatedSlides[index].title = value;
-                                    setSlides(updatedSlides);
-                                }}
+                                onChange={(value) => handleSlideChange(index, 'title', value)}
                                 onFocus={handleEditStart}
                                 onBlur={handleEditEnd}
                                 placeholder={__('Enter title', 'easy-slider')}
@@ -74,11 +88,7 @@ export default function Edit() {
                                 <img src={slide.imageUrl} alt={slide.title} style={{ width: '400px' }} />
                             ) : (
                                 <MediaUpload
-                                    onSelect={(media) => {
-                                        const updatedSlides = [...slides];
-                                        updatedSlides[index].imageUrl = media.url;
-                                        setSlides(updatedSlides);
-                                    }}
+                                    onSelect={(media) => handleSlideChange(index, 'imageUrl', media.url)}
                                     type="image"
                                     render={({ open }) => (
                                         <button onClick={open}>
@@ -90,11 +100,7 @@ export default function Edit() {
                             <RichText
                                 tagName="p"
                                 value={slide.content}
-                                onChange={(value) => {
-                                    const updatedSlides = [...slides];
-                                    updatedSlides[index].content = value;
-                                    setSlides(updatedSlides);
-                                }}
+                                onChange={(value) => handleSlideChange(index, 'content', value)}
                                 onFocus={handleEditStart}
                                 onBlur={handleEditEnd}
                                 placeholder={__('Enter content', 'easy-slider')}
