@@ -89,6 +89,20 @@ function Edit({
       slides: updatedSlides
     });
   };
+  const removePicture = indexToRemove => {
+    const updatedSlides = slides.map((slide, index) => {
+      if (index === indexToRemove) {
+        return {
+          ...slide,
+          imageUrl: ""
+        };
+      }
+      return slide;
+    });
+    setAttributes({
+      slides: updatedSlides
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Toolbar, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
@@ -100,7 +114,11 @@ function Edit({
     icon: "dismiss",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Remove Slide"),
     onClick: () => removeSlide(index)
-  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    icon: "trash",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Remove Picture"),
+    onClick: () => removePicture(currentSlide)
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "slider-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "slides",

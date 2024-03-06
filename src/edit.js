@@ -72,7 +72,15 @@ export default function Edit({ attributes, setAttributes }) {
 		);
 		setAttributes({ slides: updatedSlides });
 	};
-
+	const removePicture = (indexToRemove) => {
+		const updatedSlides = slides.map((slide, index) => {
+			if (index === indexToRemove) {
+				return { ...slide, imageUrl: "" };
+			}
+			return slide;
+		});
+		setAttributes({ slides: updatedSlides });
+	};
 	return (
 		<div {...blockProps}>
 			<BlockControls>
@@ -86,6 +94,11 @@ export default function Edit({ attributes, setAttributes }) {
 							onClick={() => removeSlide(index)}
 						/>
 					))}
+					<Button
+						icon="trash"
+						label={__("Remove Picture")}
+						onClick={() => removePicture(currentSlide)}
+					/>
 				</Toolbar>
 			</BlockControls>
 			<div className="slider-container">
