@@ -33,6 +33,38 @@
           "imageUrl": ""
         }
       ]
+    },
+    "imageBorderRadius": {
+      "type": "number",
+      "default": 0
+    },
+    "imageSize": {
+      "type": "number",
+      "default": 400
+    },
+    "titleColor": {
+      "type": "string",
+      "default": ""
+    },
+    "titleSize": {
+      "type": "number",
+      "default": 24
+    },
+    "titleStyle": {
+      "type": "string",
+      "default": "normal"
+    },
+    "contentColor": {
+      "type": "string",
+      "default": ""
+    },
+    "contentSize": {
+      "type": "number",
+      "default": 16
+    },
+    "contentStyle": {
+      "type": "string",
+      "default": "normal"
     }
   },
   "editorScript": "file:./index.js",

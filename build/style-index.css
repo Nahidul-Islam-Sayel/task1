@@ -5,12 +5,12 @@
   overflow: hidden;
   position: relative;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  border: 2px solid #e6e6e6; /* Add border to slider container */
-  border-radius: 10px; /* Add border radius for rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
-  background-color: #f9f9f9; /* Set background color */
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #e6e6e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 }
 
 .slides {
@@ -31,27 +31,27 @@
 }
 
 .slide h2 {
-  max-width: 400px; /* Set maximum width for title and content */
-  margin-left: auto; /* Align text to the center */
+  max-width: 400px;
+  margin-left: auto;
   margin-right: auto;
 }
 
 .slide p {
-  max-width: 600px; /* Set maximum width for title and content */
-  margin-left: auto; /* Align text to the center */
-  margin-right: auto; /* Align text to the center */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slide img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 20px; /* Add some space below the image */
+  margin-bottom: 20px;
 }
 
 .slider-controls {
   margin-top: 10px;
   display: flex;
-  justify-content: center; /* Center horizontally */
+  justify-content: center;
 }
 
 .prev-button,

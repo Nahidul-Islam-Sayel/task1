@@ -17,33 +17,33 @@
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    text-align: center; /* Center text */
+    text-align: center; 
     padding: 20px;
     box-sizing: border-box;
-    word-wrap: break-word; /* Allow text to wrap within the slide */
+    word-wrap: break-word; 
 }
 
 .slide h2{
-    max-width: 400px; /* Set maximum width for title and content */
-    margin-left: auto; /* Align text to the center */
+    max-width: 400px; 
+    margin-left: auto; 
     margin-right: auto; 
 }
 .slide p {
-    max-width: 600px; /* Set maximum width for title and content */
-    margin-left: auto; /* Align text to the center */
-    margin-right: auto; /* Align text to the center */
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 .slide img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 20px; /* Add some space below the image */
+    margin-bottom: 20px; 
 }
 
 .slider-controls {
     margin-top: 10px;
     display: flex;
-    justify-content: center; /* Center horizontally */
+    justify-content: center; 
 }
 
 .prev-button,
