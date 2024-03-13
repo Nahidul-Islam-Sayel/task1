@@ -194,7 +194,7 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 							}}
 						>
 							{slides.map((slide, index) => (
-								<div key={index} className="slide" style={{width: "100px", overflow: "hidden"}}>
+								<div key={index} className="slide">
 									{slide.imageUrl ? (
 										<img src={slide.imageUrl} alt={slide.title} />
 									) : (
@@ -261,4 +261,95 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 			</div>
 		</div>
 	);
+}
+
+
+
+.slider-container {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 auto; /* Adjust if necessary */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    padding: 20px;
+    box-sizing: border-box;
+    width: 600px; /* Set fixed width */
+    overflow-wrap: break-word; /* Ensure content wraps when it exceeds the width */
+}
+
+.slide h2{
+    max-width: 600px;
+  
+    margin-left: auto;
+    margin-right: auto; 
+}
+.slide p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.slide img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px; 
+}
+
+.slider-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; 
+}
+
+.prev-button,
+.next-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.prev-button:hover,
+.next-button:hover {
+    opacity: 0.7;
+}
+
+.pagination-dots-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot-xyz {
+    background-color: #bbb;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot-xyz.active {
+    background-color: #333;
+}
+
+.dot-xyz:hover {
+    background-color: #999;
 }
